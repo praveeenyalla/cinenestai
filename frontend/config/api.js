@@ -12,8 +12,9 @@ const getApiUrl = () => {
             return 'http://localhost:8000';
         }
 
-        // For production/STAGING environments (like Netlify), 
-        // the proxy defined in netlify.toml (/api/* -> function) should be used.
+        // For production environments (Railway, etc.),
+        // the backend should be accessible via the same domain under /api
+        // or properly configured proxying.
         return '/api';
     }
 

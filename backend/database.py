@@ -35,21 +35,20 @@ try:
 except Exception as e:
     print(f"❌ Failed to connect to MongoDB: {e}")
 
-# --- Neon PostgreSQL Connection (Netlify) ---
-# Netlify provides NETLIFY_DATABASE_URL for Neon integration
-PG_DATABASE_URL = os.getenv("NETLIFY_DATABASE_URL") or os.getenv("DATABASE_URL")
-
+# --- PostgreSQL Connection (Optional) ---
+# We generally use MongoDB, but leave this placeholder for general SQL needs if preferred.
+PG_DATABASE_URL = os.getenv("DATABASE_URL")
 pg_conn = None
 
 if PG_DATABASE_URL:
     try:
         import psycopg2
         pg_conn = psycopg2.connect(PG_DATABASE_URL)
-        print("✅ Connected to Neon PostgreSQL")
+        print("✅ Connected to PostgreSQL")
     except ImportError:
         print("⚠️ psycopg2 not installed. PostgreSQL support limited.")
     except Exception as e:
-        print(f"❌ Failed to connect to Neon PostgreSQL: {e}")
+        print(f"❌ Failed to connect to PostgreSQL: {e}")
 
 def get_db():
     return db

@@ -12,14 +12,12 @@ const getApiUrl = () => {
             return 'http://localhost:8000';
         }
 
-        // For production environments (Railway, etc.),
-        // the backend should be accessible via the same domain under /api
-        // or properly configured proxying.
-        return '/api';
+        // Use the Render backend URL for production
+        return 'https://cinenest-backend.onrender.com';
     }
 
     // Default to localhost for local env, or use Env var for production build
-    return process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+    return process.env.NEXT_PUBLIC_API_URL || 'https://cinenest-backend.onrender.com';
 };
 
 export const API_URL = getApiUrl();
